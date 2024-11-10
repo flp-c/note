@@ -1,6 +1,7 @@
 package clases;
 
 public class Usuario{
+	String id;
 	String nombre;
 	String apellido;
 	String mail;
@@ -8,16 +9,25 @@ public class Usuario{
 	DTFecha fechaNac;
 	int racha;
 	
-	public Usuario(String nombre, String apellido, String mail, String contraseña, DTFecha fechaNac, int racha) {
+	public Usuario(String id, String nombre, String apellido, String mail, String contraseña, DTFecha fechaNac) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.mail = mail;
 		this.contraseña = contraseña;
 		this.fechaNac = fechaNac;
-		this.racha = racha;
+		this.racha = 0;
 	}
 
+	public String getId() {
+		return nombre;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
