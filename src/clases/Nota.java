@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.channels.UnsupportedAddressTypeException;
 
+import android.content.Context;
 import android.content.res.AssetManager.AssetInputStream;
+import android.media.MediaPlayer;
+import android.net.Uri;
 
 public class Nota {
 	private String id;
@@ -41,33 +44,28 @@ public class Nota {
 		this.id = id;
 	}
 	
-	public void reproducirAudio(){
-		/*File audioFile = new File(this.getRutaSonido());
+	public void reproducirAudio(Context context){
+		 File audioFile = new File(this.getRutaSonido());
 
-        AssetInputStream audioStream = null;
-        
-		try {
-			audioStream = AudioSystem.getAudioInputStream(audioFile);
-		} catch (UnsupportedAddressTypeException | IOException e) {
-			e.printStackTrace();
-		}
-		
-        Clip clip = null;
-        
-		try {
-			clip = AudioSystem.getClip();
-		} catch (LineUnavailableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-        try {
-			clip.open(audioStream);
-		} catch (LineUnavailableException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+		    if (audioFile.exists()) {
+		        Uri uri = Uri.fromFile(audioFile);
+		        MediaPlayer mediaPlayer = MediaPlayer.create(context, uri);
+
+		        if (mediaPlayer != null) {
+		            // Usando una clase anónima en lugar de la lambda
+		            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+		                @Override
+		                public void onCompletion(MediaPlayer mp) {
+		                    mp.release(); // Libera el MediaPlayer cuando termine la reproducción
+		                }
+		            });
+		            mediaPlayer.start();
+		        } else {
+		            System.out.println("Error al inicializar el MediaPlayer.");
+		        }
+		    } else {
+		        System.out.println("El archivo de audio no existe.");
+		    }
 	}
 	
 }
