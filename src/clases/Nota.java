@@ -10,30 +10,22 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Nota {
-	private char letra;
-	private boolean alteracion;
+	private String id;
+	private String nombre;
 	private String rutaSonido;
 	
-	public Nota(char letra, boolean alteracion, String rutaSonido) {
-		this.letra = letra;
-		this.alteracion = alteracion;
+	public Nota(String nombre, String rutaSonido, String id) {
+		this.nombre = nombre;
 		this.rutaSonido = rutaSonido;
+		this.id = id;
 	}
 	
-	public char getLetra() {
-		return this.letra;
+	public String getNombre() {
+		return this.nombre;
 	}
 	
-	public void setLetra(char letra) {
-		this.letra = letra;
-	}
-	
-	public boolean getAlteracion() {
-		return this.alteracion;
-	}
-	
-	public void setAlteracion(boolean alteracion) {
-		this.alteracion = alteracion;
+	public void setLetra(String nombre) {
+		this.nombre = nombre;
 	}
 	
 	public String getRutaSonido() {
@@ -44,7 +36,15 @@ public class Nota {
 		this.rutaSonido = rutaSonido;
 	}
 	
-	public void reproducirNota(){
+	public String getId(){
+		return this.id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	public void reproducirAudio(){
 		File audioFile = new File(this.getRutaSonido());
 
         AudioInputStream audioStream = null;
