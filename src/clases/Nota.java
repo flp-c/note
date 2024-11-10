@@ -2,12 +2,9 @@ package clases;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.UnsupportedAddressTypeException;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import android.content.res.AssetManager.AssetInputStream;
 
 public class Nota {
 	private String id;
@@ -45,13 +42,13 @@ public class Nota {
 	}
 	
 	public void reproducirAudio(){
-		File audioFile = new File(this.getRutaSonido());
+		/*File audioFile = new File(this.getRutaSonido());
 
-        AudioInputStream audioStream = null;
+        AssetInputStream audioStream = null;
         
 		try {
 			audioStream = AudioSystem.getAudioInputStream(audioFile);
-		} catch (UnsupportedAudioFileException | IOException e) {
+		} catch (UnsupportedAddressTypeException | IOException e) {
 			e.printStackTrace();
 		}
 		
@@ -70,6 +67,7 @@ public class Nota {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 	}
 	
 }
