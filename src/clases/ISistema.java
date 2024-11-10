@@ -2,6 +2,6 @@ package clases;
 
 public abstract class ISistema {
 	
-	public abstract boolean esNota(Nota n);
+	public abstract boolean esNota(String id);
 	
 }
